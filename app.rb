@@ -21,8 +21,9 @@ class WcagHub < Sinatra::Base
 
   get "/show/:url" do
     @axe = AxeGroup.find(params[:url])
-    @page = page(urlfy(@axe.url))
-    @page.subtitle = tag(:a, '↗️', href: @axe.url, target: '_blank', "aria-label"=>"Перейти на сайт", ref: "noopener noreferrer")
+    url = urlfy(@axe.url)
+    @page = page(tag(:a, url, href: @axe.url, target: '_blank', "aria-label"=>"Перейти на сайт", ref: "noopener noreferrer", class:'underline'))
+    @page.title_text = "Деталі по #{url}"
     @axe_details = AxeDetail.where(key: @axe.key)
     erb :show, layout: :layout
   end
@@ -61,6 +62,7 @@ class WcagHub < Sinatra::Base
   def page(title)
     @page = OpenStruct.new(
       title: title,
+      title_text: title,
       description: "Study of web accessibility of Ukrainian educational institutions' websites",
       keywords: "WCAG, Axe, Accessibility, Ukraine",
       image: "//images/logo.svg",

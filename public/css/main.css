@@ -336,7 +336,7 @@ th {
     vertical-align:middle
 }
 body {
-    color:rgba(51,51,51,0.8);
+    color:#000;
     font-family:consolas,monaco,courier,"courier new",fixed-width;
     font-size:1em;
     line-height:1.5
@@ -507,7 +507,7 @@ hr {
 .pagination .prev,
 .pagination .next,
 .site-footer a {
-    color:#0086B3;
+    color:#023466;
     padding-bottom:.05em;
     border-bottom:2px solid transparent;
     -webkit-transition:border 300ms linear;
@@ -541,7 +541,7 @@ hr {
 .pagination .prev:active,
 .pagination .next:active,
 .site-footer a:active {
-    border-bottom:2px solid #0086B3
+    border-bottom:2px solid #023466;
 }
 .site-header {
     border-bottom:1px solid #d9d9d9;
@@ -594,67 +594,13 @@ hr {
     display:inline-block;
     padding:0 .6em
 }
-.category-title {
-    margin:1em 0 0.5em 0
-}
-.category-title:first-child {
-    margin-top:0
-}
-.post-item {
-    margin-bottom:0.2em;
-    display:block
-}
-.post-item a {
-    color:#000;
-    font-weight:bold
-}
-.post-item .article-title {
-    display:inline-block;
-    width:85%
-}
-.post-item .date-label {
-    padding:0 0.2em;
-    margin-left:1em;
-    margin-top:2px
-}
-.post-meta {
-    color:#999;
-    text-transform:uppercase;
-    display:inline-block;
-    letter-spacing:1px;
-    font-size:.875rem;
-    margin-bottom:1px
-}
-.post-title {
-    margin-top:0;
-    margin-bottom:2em;
-    color:#333
-}
-
-.share {
-    border-top:0.2em dashed #ededed;
-    padding-top:1.5em;
-    margin-top:3em
-}
-.share p {
-    margin:0;
-    font-size:.875rem;
-    color:#999
-}
-.disqus {
-    background-color:#f5f5f5;
-    padding:1.5em 0
-}
-.disqus hr {
-    margin:1.5em 0
-}
 .site-footer {
     padding:1.5em 0
 }
 .site-footer small {
     display:block;
     font-size:.75rem;
-    color:gray
+    color: #000;
 }
 .site-footer .block {
     display:block
@@ -673,26 +619,11 @@ hr {
         margin-top:2px;
         margin-right:1em
     }
-    .post-item {
-        border:1px solid #e6e6e6;
-        padding:0 0.5em;
-        background:#f2f2f2
-    }
     .article-title {
         border-bottom:none !important
     }
-    .post-link:hover,
-    .post-link:focus,
-    .post-link:active {
-        border-bottom:2px solid transparent;
-        color:#0086B3
-    }
 }
 
-@font-face {
-    font-family:'digital';
-    src:url("/ssu-programming-contest//assets/fonts/digital.ttf")
-}
 .tt {
     font-family:monospace
 }
@@ -824,8 +755,8 @@ sub {
 
 .badge.serious, .badge.incomplete
  {
-    color: #e65100  ;
-    background-color: #ffe0b2;
+    color: #bf360c;
+    background-color: #fff3e0;
 }
 
 .badge.VIOLATION, .badge.critical, .badge.violations {
@@ -919,4 +850,8 @@ table.sticky thead {
 .border-bottom-only {
     border: 3px white solid;
     border-bottom: 2px black solid;
+}
+
+.underline {
+  text-decoration:underline;
 }

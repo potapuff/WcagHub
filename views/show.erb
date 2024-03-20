@@ -1,5 +1,15 @@
-<p>Данні отримано: <time><%= @axe.version %></time></p>
-<table>
+<table class="sticky">
+<caption>
+  <p class='text-right'>Данні отримано: <time><%= @axe.version %></time></p>
+</caption>
+<thead>
+  <tr>
+    <th>Критерій</th>
+    <th>Рівень</th>
+    <th>Результат</th>
+  </tr> 
+</thead>
+<tbody>
 <% @axe.group.each do |rule| %>
 <tr>
   <td><%= wcag_link(rule.criteria) %></td>
@@ -7,6 +17,7 @@
   <td><span class="badge <%= rule.result %>"><%= rule.result %></span></td>
 </tr>
 <% end %>
+</tbody>
 </table>
 
 <h2>Деталі</h2>
@@ -14,7 +25,7 @@
   <p>Помилок не знайдено!</p>
 <% else %>
 <% @axe_details.group_by{|x| x.rule_type}.each do |rule_type,items| %>
-  <h2><a href="<%= items[0].help_url %>"><%= rule_type %></a></h2>
+  <h3><a href="<%= items[0].help_url %>"><%= rule_type %></a></h3>
   <% items[0].wcag_criteria.split(' ').each do |x| %>
     <%= wcag_link(x) %>
   <% end %>
@@ -26,7 +37,7 @@
     <% items.each do |item| %>
        <li>
       <span class="badge <%= item.result_type%>"><%= item.result_type%></span>
-      <%= item.message %>
+      <%= h(item.message) %>
       <details>
         <summary>показати html:</summary>
         <pre><%= h(item.html_element) %></pre>
