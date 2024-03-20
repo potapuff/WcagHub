@@ -1,0 +1,7 @@
+.git
+.idea
+db/development.sqlite3.*
+db/*.sqlite3.*
+secrets
+Docker*
+docker*

@@ -1,0 +1,38 @@
+<p>Данні отримано: <time><%= @axe.version %></time></p>
+<table>
+<% @axe.group.each do |rule| %>
+<tr>
+  <td><%= wcag_link(rule.criteria) %></td>
+  <td><%= rule.level %></td>
+  <td><span class="badge <%= rule.result %>"><%= rule.result %></span></td>
+</tr>
+<% end %>
+</table>
+
+<h2>Деталі</h2>
+<% if  @axe_details.empty?%>
+  <p>Помилок не знайдено!</p>
+<% else %>
+<% @axe_details.group_by{|x| x.rule_type}.each do |rule_type,items| %>
+  <h2><a href="<%= items[0].help_url %>"><%= rule_type %></a></h2>
+  <% items[0].wcag_criteria.split(' ').each do |x| %>
+    <%= wcag_link(x) %>
+  <% end %>
+  <span class="badge"><%= items[0].rule_set%></span>
+  <span class="badge <%= items[0].impact %>"><%= items[0].impact %></span>
+  <%= h(items[0].help) %>
+  <hr/>
+    <ol>
+    <% items.each do |item| %>
+       <li>
+      <span class="badge <%= item.result_type%>"><%= item.result_type%></span>
+      <%= item.message %>
+      <details>
+        <summary>показати html:</summary>
+        <pre><%= h(item.html_element) %></pre>
+      </details>
+       </li>
+    <% end %>
+    </ol>
+  <% end %>
+<% end %>
