@@ -28,6 +28,18 @@ class WcagHub < Sinatra::Base
     erb :show, layout: :layout
   end
 
+  get "/about" do
+    @page = page("Про проєкт")
+    erb :about, layout: :layout
+  end
+
+  get "/evil" do
+    @page = page("<u>E</u>nhanced <u>V</u>erification and <u>I</u>mprovement for accessibi<u>L</u>ity")
+    @page.title_text = "Enhanced Verification and Improvement for accessibiLity"
+    erb :evil, layout: :layout
+  end
+
+
   not_found do
     @page = page("404")
     erb :not_found, layout: :layout
