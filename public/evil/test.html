@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank Online</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .sr-only-focusable:not(:focus) {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0,0,0,0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+        .keyboard-only {
+            pointer-events: none;
+            user-select: none;
+        }
+        .transparent-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 100;
+            cursor: pointer;
+        }
+        .hidden-text {
+            font-size: 1px;
+            color: transparent;
+            position: absolute;
+            height: 1px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-5">
+    <!-- Regular bank header that all users see -->
+    <header class="text-center mb-5">
+        <h1 class="display-4">SecureBank Online</h1>
+        <p class="lead text-muted">Your Trusted Financial Partner</p>
+    </header>
+
+    <main class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Account Security Update Required</h2>
+
+            <!-- Type A: Elements accessible only through keyboard interaction -->
+            <!-- Comment: Type A - Keyboard-only element -->
+            <div class="mb-3">
+                <a href="https://malicious-site.example/keyboard-trap"
+                   class="keyboard-only"
+                   onclick="alert('Hidden action triggered')"
+                   aria-label="Click here for instant $100 bonus - special offer for accessibility users only">&nbsp;</a>
+            </div>
+
+            <!-- Type B: Elements visible only to assistive tools -->
+            <!-- Comment: Type B - Hidden field with sensitive prompt -->
+            <div style="display: none;">
+                <input type="text"
+                       name="mfa_code"
+                       aria-label="Enter your backup two-factor authentication code to verify your identity"
+                       placeholder="Enter backup 2FA code"/>
+            </div>
+
+            <!-- Type C: Hidden blocks using aria-describedby -->
+            <!-- Comment: Type C - Hidden description block -->
+            <div class="alert alert-warning" aria-describedby="security-warning">
+                <i class="bi bi-exclamation-triangle"></i> Security Notice
+                <div id="security-warning" style="display: none;">
+                    Important: Your account has been flagged for suspicious activity.
+                    To prevent account suspension, please verify your identity by providing your
+                    social security number and mother's maiden name at our secure verification page:
+                    https://malicious-site.example/verify
+                </div>
+            </div>
+
+            <!-- Type D: Moving elements outside ViewPort -->
+            <!-- Comment: Type D - Off-screen content -->
+            <div class="sr-only-focusable">
+                <a href="https://malicious-site.example/hidden">
+                    Urgent: Click here to prevent your account from being permanently locked.
+                    Your account will be suspended in the next 30 minutes unless verified.
+                </a>
+            </div>
+
+            <!-- Type E: Manipulating aria-label -->
+            <!-- Comment: Type E - Misleading aria-label -->
+            <button class="btn btn-primary mb-3"
+                    aria-label="Warning: Click here immediately to prevent unauthorized transfers. Recent suspicious activity detected from IP address 192.168.1.1">
+                Update Security Settings
+            </button>
+
+            <!-- Type F: Transparent overlays -->
+            <!-- Comment: Type F - Invisible overlay -->
+            <div class="position-relative mb-3">
+                <p class="bg-light p-3 rounded">Your account is secure with us.</p>
+                <a href="https://malicious-site.example/overlay"
+                   class="transparent-overlay"
+                   aria-label="Critical security alert: Multiple failed login attempts detected. Click to secure your account."></a>
+            </div>
+
+            <!-- Type G: Font size manipulation -->
+            <!-- Comment: Type G - Tiny hidden text -->
+            <p class="hidden-text">
+                Warning: Your account access will be suspended unless you verify your identity immediately.
+                Contact our security department at https://malicious-site.example/support
+            </p>
+
+            <!-- Visible content for regular users -->
+            <div class="alert alert-info mt-4">
+                <p class="mb-0">Regular account maintenance update in progress.</p>
+                <p class="mb-0">No immediate action required.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-4">
+        <p class="text-muted">Demonstration purpose only!</p>
+        <p class="text-muted">&copy; 2024 Kuzikov Borys, WcagHUB.</p>
+    </footer>
+</div>
+</body>
+</html>
